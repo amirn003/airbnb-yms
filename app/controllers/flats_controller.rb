@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:edit, :update]
+  before_action :set_flat, only: [:edit, :update, :destroy, :show]
 
   def index
     @flats = Flat.all
@@ -30,10 +30,15 @@ class FlatsController < ApplicationController
   def update
     @flat.user = current_user
     if @flat.update(flat_params)
-      redirect_to @flats_path, notice: 'Upadated successfully!'
+      redirect_to @flats_path, notice: 'Upadated successfully!', status: :see_other
     else
       render :edit
     end
+  end
+
+  def destroy
+    @flat.destroy
+    redirect_to root_path, notice: 'Flat was successfully destroyed!', status: :see_other
   end
 
   private
