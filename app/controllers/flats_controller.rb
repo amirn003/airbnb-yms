@@ -7,11 +7,13 @@ class FlatsController < ApplicationController
 
   def new
     @flat = Flat.new
+    authorize @flat
   end
 
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
+    authorize @flat
 
     if @flat.save
       redirect_to flats_path
@@ -21,13 +23,15 @@ class FlatsController < ApplicationController
   end
 
   def show
-
+    authorize @flat
   end
 
   def edit
+    authorize @flat
   end
 
   def update
+    authorize @flat
     @flat.user = current_user
     if @flat.update(flat_params)
       redirect_to @flats_path, notice: 'Upadated successfully!', status: :see_other
@@ -37,6 +41,7 @@ class FlatsController < ApplicationController
   end
 
   def destroy
+    authorize @flat
     @flat.destroy
     redirect_to root_path, notice: 'Flat was successfully destroyed!', status: :see_other
   end
