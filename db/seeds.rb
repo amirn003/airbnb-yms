@@ -8,7 +8,7 @@
 require 'faker'
 require 'literate_randomizer'
 
-user = User.create!(email: "agnea@gmail.com", password: "hellohello")
+#user = User.create!(email: "agnea@gmail.com", password: "hellohello")
 
 20.times do
   flat = Flat.new(
@@ -16,7 +16,7 @@ user = User.create!(email: "agnea@gmail.com", password: "hellohello")
     description: LiterateRandomizer.paragraph,
     price: (50..1000).to_a.sample,
     address: Faker::Address.full_address,
-    user_id: user.id
+    user_id: 1
   )
   flat.save!
 end

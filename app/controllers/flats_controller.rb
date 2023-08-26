@@ -2,7 +2,8 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:edit, :update, :destroy, :show]
 
   def index
-    @flats = Flat.all
+    @flats = policy_scope(Flat)
+    #authorize @flat
   end
 
   def new
