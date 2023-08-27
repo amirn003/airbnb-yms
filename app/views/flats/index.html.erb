@@ -4,7 +4,7 @@
     <div class="col-12">
       <h1>List of Flats</h1>
 
-
+  <%= link_to "New flat", new_flat_path if policy(Flat).new? %>
   <div class="row">
     <% @flats.each do |flat| %>
       <div class="col-md-4">

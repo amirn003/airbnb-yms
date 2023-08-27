@@ -1,3 +1,7 @@
 <h1>Show page: <%= @flat.name %></h1>
 
-<%= button_to 'Delete', @flat, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% if policy(@flat).edit? %>
+  <%= link_to "Edit this flat", edit_flat_path(@flat) %> |
+<% end %>
+<%= button_to "Destroy this flat", @flat, method: :delete if policy(@flat).destroy?  %>
