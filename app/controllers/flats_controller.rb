@@ -4,6 +4,11 @@ class FlatsController < ApplicationController
   def index
     @flats = policy_scope(Flat)
     #authorize @flats
+    @markers = @flats.geocoded.map do |flat|
+    {
+      lat: flat.latitude,
+      lng: flat.longitude
+    }
   end
 
   def new
