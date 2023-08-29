@@ -1,38 +1,51 @@
-
-body {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/sky.jpg");
-  background-color: white;
-  background-repeat: no-repeat, repeat;
-  background-position: center;
+.banner {
   background-size: cover;
- }
+  background-position: center;
+  padding: 0;
+  /* Remove top and bottom padding */
+  height: 100vh;
+  /* Set the height to 100% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-h3 {
-  color: rgb(245, 227, 179);
-  text-align: center;
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0 20px;
+  /* Add padding to the sides for better readability */
+  margin-bottom: 20px;
+  /* Add bottom margin to create space */
+}
+
+.banner p {
   font-size: 20px;
-  font-family: Georgia, serif;
-  padding-top: 100px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  /* Add some padding to the paragraph */
 }
-h4 {
-  color: wheat;
-  text-align: center;
-  font-size: 20px;
-  font-family: Georgia, serif;
-}
-.extras{
-  color: wheat;
-  padding-top: 300px;
-}
+
 .btn_all {
-  background-color: #0f21de;
-  border: 5px;
+  background-color: $dark-blue;
+  border: none;
+  /* Remove default button border */
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 2px;
+  /* Increase vertical margin for buttons */
   cursor: pointer;
+  border-radius: 10px;
+  /* Add border-radius for slight rounding */
 }
