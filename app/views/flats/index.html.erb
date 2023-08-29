@@ -26,9 +26,9 @@
               <div class="flex">
                 <i class="material-icons me-2">address</i><span><%= flat.address %></span>
               </div>
-                <div class="flex ms-3">
+                <div class="flex">
                 <i class="fa-solid fa-euro-sign"></i> <%= flat.price %> per night
-                  <%= link_to "More info", flat_path(flat) %>
+                  <%= link_to "More info", flat_path(flat), class: "yellow-btn" %>
               </div>
 
             </div>
