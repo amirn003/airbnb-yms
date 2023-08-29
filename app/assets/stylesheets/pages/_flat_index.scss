@@ -43,3 +43,24 @@
 h1 {
   margin-bottom: 2rem;
 }
+
+.custom-button {
+  background-color: $light-blue;
+  border: none;
+  /* Remove default button border */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 2px;
+  /* Increase vertical margin for buttons */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.custom-button:hover {
+  text-decoration: none;
+  background-color: #0056b3;
+}
