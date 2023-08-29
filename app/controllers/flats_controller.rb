@@ -4,6 +4,12 @@ class FlatsController < ApplicationController
   def index
     @flats = policy_scope(Flat)
     #authorize @flats
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def new
@@ -37,7 +43,7 @@ class FlatsController < ApplicationController
     authorize @flat
     @flat.user = current_user
     if @flat.update(flat_params)
-      redirect_to @flats_path, notice: 'Upadated successfully!', status: :see_other
+      redirect_to flat_path(@flat), notice: 'Upadated successfully!', status: :see_other
     else
       render :edit
     end
