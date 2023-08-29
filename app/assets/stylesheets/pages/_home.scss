@@ -5,7 +5,17 @@ body {
 
   background-position: center;
   background-size: cover;
- }
+  background-position: center;
+  padding: 0;
+  /* Remove top and bottom padding */
+  height: 100vh;
+  /* Set the height to 100% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
 h3 {
   color: rgb(245, 227, 179);
@@ -32,6 +42,9 @@ h4 {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 2px;
+  /* Increase vertical margin for buttons */
   cursor: pointer;
+  border-radius: 10px;
+  /* Add border-radius for slight rounding */
 }
