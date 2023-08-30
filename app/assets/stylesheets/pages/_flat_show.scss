@@ -3,3 +3,11 @@
   background-position: center;
   background-size: cover;
 }
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  /* Add some space between buttons */
+  align-items: center;
+  /* Align buttons vertically */
+}
