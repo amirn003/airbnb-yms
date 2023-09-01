@@ -1,5 +1,3 @@
-
-
 .banner {
   background-size: cover;
   background-position: center;
@@ -32,22 +30,27 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  /* Add some padding to the paragraph */
 }
 
 .btn_all {
   background-color: $dark-blue;
   border: none;
-  /* Remove default button border */
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 20px 2px;
-  /* Increase vertical margin for buttons */
+  margin: 15px;
   cursor: pointer;
   border-radius: 10px;
-  /* Add border-radius for slight rounding */
+  transition: transform 0.2s;
+}
+
+.btn_all:hover {
+  text-decoration: none;
+  background-color: $dark-blue;
+  transform: scale(1.1);
+  color: white;
+  font-weight: bold;
 }
