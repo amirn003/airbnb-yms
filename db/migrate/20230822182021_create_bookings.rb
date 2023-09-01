@@ -1,7 +1,8 @@
 class CreateBookings < ActiveRecord::Migration[7.0]
   def change
     create_table :bookings do |t|
-      t.string :date
+      t.date :check_in
+      t.date :check_out
       t.integer :people
       t.boolean :booking_status
       t.references :user, null: false, foreign_key: true

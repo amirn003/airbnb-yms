@@ -37,8 +37,8 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
           <div class="form-inputs">
-            <%= f.input :date, as: :date, html5: true %>
-            <%= f.input :date, as: :date, html5: true %>
+            <%= f.input :checkin, as: :date, html5: true %>
+            <%= f.input :checkout, as: :date, html5: true %>
             <%= f.input :people %>
 
           </div>
@@ -47,10 +47,10 @@
             <%= f.button :submit, class: "custom-button" %>
           </div>
         <% end %>
-        <h5>Booking successful! </h5>
+        <h5>Booking successful!!!! </h5>
         <div class= "bookings_class">
      <% @flat.bookings.each do |booking|  %>
-     <p>Booked on </p> <span><%= booking.date %></span>
+     <p>Booked on </p> <span><%= booking.checkin %></span>
      <p> Booked for </p> <span> <%= booking.people %> </span>
 
      <% end %>

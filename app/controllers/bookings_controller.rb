@@ -20,10 +20,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @booking
+    @booking.destroy
+    redirect_to root_path, notice: 'Booking was successfully destroyed!', status: :see_other
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :people, :flat_id)
+    params.require(:booking).permit(:checkin, :checkout, :people, :flat_id)
   end
 
   def set_flat
