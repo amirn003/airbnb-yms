@@ -20,6 +20,12 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @booking
+    @booking.destroy
+    redirect_to root_path, notice: 'Booking was successfully destroyed!', status: :see_other
+  end
+
   private
 
   def booking_params
