@@ -60,7 +60,7 @@ class FlatsController < ApplicationController
   def destroy
     authorize @flat
     @flat.destroy
-    redirect_to root_path, notice: 'Flat was successfully destroyed!', status: :see_other
+    redirect_to flats_path, notice: 'Flat was successfully destroyed!', status: :see_other
   end
 
   private

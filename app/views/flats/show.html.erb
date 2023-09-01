@@ -7,7 +7,14 @@
   <div class="row">
     <div class="col-8">
       <div class="flat-show-card">
-      <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
+
+      <% if !@flat.photo.attached? %>
+        <%= image_tag "logo.png", height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+
+
         <h1><%= @flat.name %></h1>
           <p class="font-weight-bold"><%= @flat.price %>€ per night</p>
         <p class="flat-show-address"><%= @flat.address %></p>
