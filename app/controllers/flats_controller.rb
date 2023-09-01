@@ -3,11 +3,12 @@ class FlatsController < ApplicationController
 
   def index
     @flats = policy_scope(Flat)
-    #authorize @flats
     @markers = @flats.geocoded.map do |flat|
       {
         lat: flat.latitude,
-        lng: flat.longitude
+        lng: flat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat}),
+        marker_html: render_to_string(partial: "markers")
       }
     end
   end
@@ -33,6 +34,13 @@ class FlatsController < ApplicationController
     authorize @flat
     @booking = Booking.new
     authorize @booking
+    @flat_array = Flat.where(id: @flat.id)
+    @marker = @flat_array.geocoded.map do |flat| {
+      lat: flat.latitude,
+      lng: flat.longitude,
+      marker_html: render_to_string(partial: "markers")
+    }
+    end
   end
 
   def edit
@@ -52,7 +60,7 @@ class FlatsController < ApplicationController
   def destroy
     authorize @flat
     @flat.destroy
-    redirect_to root_path, notice: 'Flat was successfully destroyed!', status: :see_other
+    redirect_to flats_path, notice: 'Flat was successfully destroyed!', status: :see_other
   end
 
   private
