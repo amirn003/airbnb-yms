@@ -17,6 +17,7 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   color: black;
 
+
   h4 {
     color: $dark-blue;
     font-weight: bold;
@@ -44,6 +45,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100%;
 }
 
 h1 {
@@ -51,9 +53,8 @@ h1 {
 }
 
 .custom-button {
-  background-color: $light-blue;
+  background-color: $blue;
   border: none;
-  /* Remove default button border */
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -61,22 +62,70 @@ h1 {
   display: inline-block;
   font-size: 16px;
   margin: 20px 2px;
-  /* Increase vertical margin for buttons */
   cursor: pointer;
   border-radius: 10px;
+  transition: transform 0.2s;
 }
 
 .custom-button:hover {
   text-decoration: none;
   background-color: $blue;
+  transform: scale(1.1);
+  color: white;
+  font-weight: bold;
 }
 
 .yellow-btn {
   text-decoration: none;
-  margin-top: 10px;
-  background-color: $yellow;
+  margin-top: auto;
+  background-color: $light-blue;
   border: none;
   border-radius: 5px;
   padding: 3px;
-  margin-left: 20px;
+  margin-left: 150px;
+  transition: transform 0.2s;
+}
+
+.yellow-btn:hover {
+  text-decoration: none;
+  background-color: $light-blue;
+  transform: scale(1.1);
+  color: white;
+  font-weight: bold;
+}
+
+.small-btn {
+  background-color: $blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 20px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  max-width: 200px;
+  width: 100%;
+  transition: transform 0.2s;
+}
+
+.small-btn:hover {
+  text-decoration: none;
+  background-color: $blue;
+  transform: scale(1.1);
+  color: white;
+  font-weight: bold;
+}
+
+
+
+.flat-card-content .yellow-btn {
+  display: block;
+  margin-top: 10px;
+  margin-left: 0;
+  text-align: center;
+  color: white;
+
 }
