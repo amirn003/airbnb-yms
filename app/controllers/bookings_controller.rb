@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :people, :flat_id)
+    params.require(:booking).permit(:checkin, :checkout, :people, :flat_id)
   end
 
   def set_flat
