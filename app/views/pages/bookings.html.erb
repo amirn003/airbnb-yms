@@ -33,7 +33,9 @@
                 <td><%= booking.flat.user.id %> (<%= booking.flat.user.username %>)</td>
                 <td>
                   <% if booking.flat.user.id == current_user.id %>
-                    <%= link_to "Manage", "", class: "btn btn-success" %>
+
+                      <%= button_to "Manage", update_status_booking_path(booking), data: {method: "post"}, class: "btn btn-success", data: { turbo_confirm: "Are you sure you want to update the booking status?" } %>
+
                   <% elsif booking.user.id == current_user.id %>
                     <%= link_to "See", flat_path(booking.flat.id), class: "btn btn-info"  %>
                   <% end %>

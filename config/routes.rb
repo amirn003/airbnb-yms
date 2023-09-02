@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :bookings, only: [:destroy], as: "booking_delete"
+  resources :bookings, only: [:destroy] do
+    member do
+      post 'update_status', to: 'bookings#update_status'
+    end
+  end
 
   # Defines the root path route ("/")
   # root "articles#index"

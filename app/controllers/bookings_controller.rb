@@ -26,6 +26,20 @@ class BookingsController < ApplicationController
     redirect_to root_path, notice: 'Booking was successfully destroyed!', status: :see_other
   end
 
+
+  def update_status
+    @booking = Booking.find(params[:id])
+    authorize @booking
+
+    if @booking.flat.user == current_user
+      @booking.update(booking_status: true)
+      redirect_to bookings_path, notice: 'Booking status updated successfully.'
+    else
+      redirect_to bookings_path, alert: 'You are not authorized to update this booking.'
+    end
+  end
+
+
   private
 
   def booking_params
