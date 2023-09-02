@@ -1,19 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <p>Hello <%= current_user.username.capitalize %>! Welcome to your booking dashboard: </p>
+      <h3>Hello <%= current_user.username.capitalize %>, Welcome to your booking dashboard! </h3>
       <div class="table-position">
-        Your flats:
+        <h4>Your flat(s):</h4>
         <table>
           <thead>
             <tr>
-              <th>Reservation Id</th>
-              <th>Renter Id</th>
-              <th>Reservation User</th>
+              <th>Booking Id</th>
+              <th>Check-In</th>
+              <th>Check-Out</th>
+              <th>Renter</th>
               <th>Flat</th>
               <th>Price</th>
               <th>Booking status</th>
-              <th>Owner</th>
+              <%# <th>Owner</th> %>
               <th>Action</th>
             </tr>
           </thead>
@@ -22,27 +23,25 @@
               <tr>
                 <% if (booking.flat.user.id == current_user.id)  %>
                   <td> <%= booking.id %></td>
-                  <td> <%= booking.user.id %></td>
+                  <td> <%= booking.checkin %></td>
+                  <td> <%= booking.checkout %></td>
                   <td> <%= booking.user.username %> </td>
-                  <td> <%= booking.flat.name %></td>
-                  <td> <%= booking.flat.price %></td>
+                  <td> <%= link_to booking.flat.name , flat_path(booking.flat.id), class: "btn btn-info"  %></td>
+                  <td> <%= booking.flat.price * (Booking.last.checkout - Booking.last.checkin).to_i %></td>
 
                   <% if booking.booking_status? %>
                     <td> Validated </td>
                   <% else %>
                     <td> Not confirmed </td>
                   <% end %>
-                  <td><%= booking.flat.user.id %> (<%= booking.flat.user.username %>)</td>
+                  <%# <td><%= booking.flat.user.id %>
                   <td>
-                    <% if booking.flat.user.id == current_user.id %>
                         <% if booking.booking_status? %>
                           <%= button_to "Cancel Reservation", update_status_booking_path(booking), data: {method: "post"}, class: "btn btn-danger", data: { turbo_confirm: "Are you sure you want to update the booking status?" } %>
                         <% else %>
                           <%= button_to "Confirm Reservation", update_status_booking_path(booking), data: {method: "post"}, class: "btn btn-success", data: { turbo_confirm: "Are you sure you want to update the booking status?" } %>
                         <% end %>
-                    <% elsif booking.user.id == current_user.id %>
-                      <%= link_to "See", flat_path(booking.flat.id), class: "btn btn-info"  %>
-                    <% end %>
+
 
                   </td>
                   <% end %>
@@ -53,18 +52,18 @@
       </div>
 
       <div class="table-position">
-        Your booking:
+        <h4>Your booking(s):</h4>
         <table>
           <thead>
             <tr>
-              <th>Reservation Id</th>
-              <th>Renter Id</th>
-              <th>Reservation User</th>
+              <th>Booking Id</th>
+              <th>Check-In</th>
+              <th>Check-Out</th>
               <th>Flat</th>
               <th>Price</th>
               <th>Booking status</th>
               <th>Owner</th>
-              <th>Action</th>
+              <%# <th>Action</th> %>
             </tr>
           </thead>
           <tbody>
@@ -72,29 +71,20 @@
               <tr>
                 <% if booking.user.id == current_user.id  %>
                   <td> <%= booking.id %></td>
-                  <td> <%= booking.user.id %></td>
-                  <td> <%= booking.user.username %> </td>
-                  <td> <%= booking.flat.name %></td>
-                  <td> <%= booking.flat.price %></td>
+                  <td> <%= booking.checkin %></td>
+                  <td> <%= booking.checkout %></td>
+                  <td> <%= link_to booking.flat.name , flat_path(booking.flat.id), class: "btn btn-info"  %></td>
+                  <td> <%= booking.flat.price * (Booking.last.checkout - Booking.last.checkin).to_i %></td>
 
                   <% if booking.booking_status? %>
                     <td> Validated </td>
                   <% else %>
                     <td> Not confirmed </td>
                   <% end %>
-                  <td><%= booking.flat.user.id %> (<%= booking.flat.user.username %>)</td>
-                  <td>
-                    <% if booking.flat.user.id == current_user.id %>
-                        <% if booking.booking_status? %>
-                          <%= button_to "Cancel Reservation", update_status_booking_path(booking), data: {method: "post"}, class: "btn btn-danger", data: { turbo_confirm: "Are you sure you want to update the booking status?" } %>
-                        <% else %>
-                          <%= button_to "Confirm Reservation", update_status_booking_path(booking), data: {method: "post"}, class: "btn btn-success", data: { turbo_confirm: "Are you sure you want to update the booking status?" } %>
-                        <% end %>
-                    <% elsif booking.user.id == current_user.id %>
-                      <%= link_to "See", flat_path(booking.flat.id), class: "btn btn-info"  %>
-                    <% end %>
-
-                  </td>
+                  <td><%= booking.flat.user.username.capitalize %></td>
+                  <%# <td>
+                    <%= link_to "Delete", booking_path(booking), data: {method: "delete"} if policy(booking).destroy? %>
+                  <%# </td>  %>
                   <% end %>
               </tr>
             <% end %>
