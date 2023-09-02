@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
   end
 
-  def booking
+  def bookings
     @bookings = Booking.all
   end
 end

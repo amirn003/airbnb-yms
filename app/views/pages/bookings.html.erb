@@ -1,0 +1,54 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>Current user: <%= current_user.id %> (<%= current_user.username %>) </p>
+      <div class="table-position">
+        <table>
+          <thead>
+            <tr>
+              <th>Reservation User Id</th>
+              <th>Reservation User</th>
+              <th>Flat</th>
+              <th>Price</th>
+              <th>Booking status</th>
+              <th>Owner</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookings.each do |booking| %>
+              <tr>
+                <td> <%= booking.user.id %></td>
+                <td> <%= booking.user.username %> </td>
+                <td> <%= booking.flat.name %></td>
+                <td> <%= booking.flat.price %></td>
+
+                <% if booking.booking_status? %>
+                  <td> <%= booking.booking_status %> </td>
+                <% else %>
+                  <td> Not confirmed </td>
+                <% end %>
+                <td><%= booking.flat.user.id %> (<%= booking.flat.user.username %>)</td>
+                <td>
+                  <% if booking.flat.user.id == current_user.id %>
+                    <%= link_to "Manage", "", class: "btn btn-success" %>
+                  <% elsif booking.user.id == current_user.id %>
+                    <%= link_to "See", flat_path(booking.flat.id), class: "btn btn-info"  %>
+                  <% end %>
+
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="button-container">
+        <%= link_to "Refresh", bookings_path, class: "btn button-booking" %>
+        <%= link_to "Back to flats list", flats_path, class: "custom-button" %>
+      </div>
+    </div>
+  </div>
+</div>
