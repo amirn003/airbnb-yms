@@ -26,7 +26,9 @@
         <% if policy(@flat).edit? %>
           <%= link_to "Edit flat info", edit_flat_path(@flat), class: "custom-button" %>
         <% end %>
+        <% if policy(@flat).destroy? %>
         <%= button_to "Delete this flat", @flat, class: "custom-button", method: :delete if policy(@flat).destroy? %>
+        <% end %>
         <%= link_to "Back to flats list", flats_path, class: "custom-button" %>
       </div>
 
@@ -37,33 +39,39 @@
       </div>
     </div>
 
+
     <div class="col-4">
       <div class="flat-show-card">
-        <h5>Book now!</h5>
+
+        <% if @flat.user.id == current_user.id %>
+
+          <%= link_to "Check your reservation", bookings_path, class: "custom-button"%>
+
+        <% else %>
+          <h5>Book now!</h5>
 
 
-        <%= simple_form_for [@flat, @booking] do |f| %>
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= simple_form_for [@flat, @booking] do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-          <div class="form-inputs">
-            <%= f.input :checkin, as: :date, html5: true %>
-            <%= f.input :checkout, as: :date, html5: true %>
-            <%= f.input :people %>
+            <div class="form-inputs">
+              <%= f.input :checkin, as: :date, html5: true %>
+              <%= f.input :checkout, as: :date, html5: true %>
+              <%= f.input :people %>
+              <%= f.hidden_field :redirect_path, value: bookings_path %>
 
-          </div>
+            </div>
 
-          <div class="form-actions">
-            <%= f.button :submit, class: "custom-button" %>
-          </div>
+            <div class="form-actions">
+              <%= f.button :submit, class: "custom-button" %>
+            </div>
+          <% end %>
+
         <% end %>
-        <h5>Booking successful!!!! </h5>
-        <div class= "bookings_class">
-     <% @flat.bookings.each do |booking|  %>
-     <p>Booked on </p> <span><%= booking.checkin %></span>
-     <p> Booked for </p> <span> <%= booking.people %> </span>
 
-     <% end %>
-        </div>
+        <%= link_to "Check your booking", bookings_path, class: "custom-button"%>
+
+      </div>
   </div>
 </div>
