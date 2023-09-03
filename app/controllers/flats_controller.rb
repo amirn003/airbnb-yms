@@ -13,7 +13,7 @@ class FlatsController < ApplicationController
     end
 
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR address ILIKE :query OR description ILIKE :query"
+      sql_subquery = "name @@ :query OR address @@ :query OR description @@ :query"
       @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
     end
   end

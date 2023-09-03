@@ -36,7 +36,7 @@
             <div class="flat-card-title">
               <h4><%= flat.name %></h4>
             </div>
-            <% if flat.description.length > 120 %>
+            <% if flat.description && flat.description.length > 120 %>
             <p style="height: 60px; overflow: hidden;"><%= flat.description.first(120)%>...</p>
             <% else  %>
             <p style="height: 60px; overflow: hidden;"><%= flat.description%></p>
