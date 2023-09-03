@@ -36,6 +36,10 @@ class ApplicationPolicy
     record.user == user || user.admin?
   end
 
+  def update_status?
+    record.flat.user == user
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
