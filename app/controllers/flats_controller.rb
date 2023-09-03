@@ -11,6 +11,11 @@ class FlatsController < ApplicationController
         marker_html: render_to_string(partial: "markers")
       }
     end
+
+    if params[:query].present?
+      sql_subquery = "name @@ :query OR address @@ :query OR description @@ :query"
+      @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def new

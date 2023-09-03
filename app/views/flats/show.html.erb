@@ -45,7 +45,7 @@
 
         <% if @flat.user.id == current_user.id %>
 
-          <%= link_to "Check your reservation", bookings_path, class: "custom-button"%>
+          <%= link_to "Go to your Booking Dashboard", bookings_path, class: "custom-button"%>
 
         <% else %>
           <h5>Book now!</h5>
@@ -70,7 +70,7 @@
 
         <% end %>
 
-        <%= link_to "Check your booking", bookings_path, class: "custom-button"%>
+
 
       </div>
   </div>
