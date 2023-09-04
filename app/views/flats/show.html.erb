@@ -15,14 +15,16 @@
         <h3>A bit more about this flat...</h3>
         <p><%= @flat.description %></p>
       <div class="button-container">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && @flat.user.id == current_user.id %>
+
         <% if policy(@flat).edit? %>
-          <%= link_to "Edit flat info", edit_flat_path(@flat), class: "custom-button" %>
+          <%= link_to "Edit", edit_flat_path(@flat), class: "custom-button " %>
         <% end %>
         <% if policy(@flat).destroy? %>
-        <%= button_to "Delete this flat", @flat, class: "custom-button", method: :delete if policy(@flat).destroy? %>
+          <%= button_to "Delete", @flat, class: "custom-button", method: :delete if policy(@flat).destroy? %>
         <% end %>
-        <% end %>
+
+      <% end %>
         <%= link_to "Back to flats list", flats_path, class: "custom-button" %>
       </div>
 
