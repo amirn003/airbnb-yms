@@ -7,11 +7,12 @@ class FlatPolicy < ApplicationPolicy
     end
 
     def index?
-      true
+      # true
+      user.blank?
     end
 
     def show?
-      true
+      # true
     end
 
     def create?
