@@ -5,18 +5,26 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
-require 'literate_randomizer'
 
+
+puts "Destroying Flats..."
+Flat.destroy_all
+
+
+puts "Creating Flats..."
 #user = User.create!(email: "agnea@gmail.com", password: "hellohello")
 
-20.times do
+10.times do
   flat = Flat.new(
     name: Faker::Name.name,
     description: LiterateRandomizer.sentence,
     price: (50..1000).to_a.sample,
     address: Faker::Address.full_address,
-    user_id: 1
+    # latitude: Faker::Address.latitude,
+    # longitude: Faker::Address.longitude,
+    user_id: rand(1..2)
   )
   flat.save!
 end
+
+puts "Finished!"
