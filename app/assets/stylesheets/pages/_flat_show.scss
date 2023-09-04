@@ -4,6 +4,7 @@
   background-size: cover;
   margin-top: 30px;
 }
+
 .button-container {
   display: flex;
   gap: 10px;
@@ -11,10 +12,17 @@
   align-items: center;
   /* Align buttons vertically */
 }
+
 .info-booking {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
+
 .container {
   margin-top: 30px;
+}
+
+.form {
+  margin-top: 300px;
+  margin-left: 200px;
 }
