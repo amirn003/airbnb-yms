@@ -20,9 +20,9 @@ puts "Creating Flats..."
     description: LiterateRandomizer.sentence,
     price: (50..1000).to_a.sample,
     address: Faker::Address.full_address,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    user_id: rand(1..3)
+    # latitude: Faker::Address.latitude,
+    # longitude: Faker::Address.longitude,
+    user_id: rand(1..2)
   )
   flat.save!
 end

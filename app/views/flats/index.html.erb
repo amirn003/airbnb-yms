@@ -33,9 +33,8 @@
           <div class="flat-card-image" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60')"></div>
           <% end %>
           <div class="flat-card-content">
-            <div class="flat-card-title">
-              <h4><%= flat.name %></h4>
-            </div>
+
+              <h4><%= link_to flat.name, flat_path(flat), class: 'flat-card-title' %></h4>
             <% if flat.description && flat.description.length > 120 %>
             <p style="height: 60px; overflow: hidden;"><%= flat.description.first(120)%>...</p>
             <% else  %>
