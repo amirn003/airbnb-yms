@@ -2,9 +2,7 @@
   background-size: cover;
   background-position: center;
   padding: 0;
-  /* Remove top and bottom padding */
   height: 93vh;
-  /* Set the height to 100% of the viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,9 +17,8 @@
   font-size: 32px;
   font-weight: bold;
   padding: 0 20px;
-  /* Add padding to the sides for better readability */
   margin-bottom: 20px;
-  /* Add bottom margin to create space */
+
 }
 
 .banner p {
