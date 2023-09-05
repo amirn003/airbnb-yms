@@ -66,8 +66,13 @@
               <%# <th>Action</th> %>
             </tr>
           </thead>
-          <tbody>
+
             <% @bookings.each do |booking| %>
+              <% if booking.booking_status? %>
+                <tbody bgcolor="green">
+              <% else %>
+                <tbody bgcolor="#FF7659">
+              <% end %>
               <tr>
                 <% if booking.user.id == current_user.id  %>
                   <td> <%= booking.id %></td>
